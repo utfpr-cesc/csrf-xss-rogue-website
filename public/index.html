@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Rogue website to demonstrate CSRF and XSS attacks."
+    />
+    <title>CSRF and XSS rogue website</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <h1>&#x1f575; CSRF and XSS rogue website</h1>
+    <p>
+      This website demonstrates CSRF and XSS attacks against the companion
+      <a
+        href="https://github.com/utfpr-cesc/csrf-nosqli-xss-application"
+        target="_blank"
+        rel="noopener noreferrer"
+      ><code>csrf-nosqli-xss-application</code></a>
+      project.
+    </p>
+    <p>
+      <strong>IMPORTANT</strong>: you should run the unprotected branch of the target app on
+      <a
+        href="http://application.com:3000"
+        target="_blank"
+        rel="noopener noreferrer"
+      ><code>application.com:3000</code></a>,
+      assign <code>application.com</code> to <code>localhost</code> on your <code>/etc/hosts</code> file
+      and also make sure that you are logged in the target application in order for the attacks to work.
+    </p>
+  </body>
+</html>

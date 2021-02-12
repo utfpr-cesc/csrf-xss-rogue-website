@@ -1,0 +1,33 @@
+{
+  "name": "rogue-website",
+  "version": "0.0.0",
+  "description": "Rogue website to demonstrate CSRF and XSS attacks.",
+  "main": "public/index.html",
+  "scripts": {
+    "start": "npx light-server -s ./public/ -w ./public/**/* -p 8080"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/utfpr-cesc/csrf-xss-rogue-website.git"
+  },
+  "keywords": [
+    "javascript",
+    "cookies",
+    "sessions",
+    "xss",
+    "xss-exploitation",
+    "csrf",
+    "csrf-exploitation"
+  ],
+  "author": "Rui Pimentel Leite",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/utfpr-cesc/csrf-xss-rogue-website/issues"
+  },
+  "homepage": "https://github.com/utfpr-cesc/csrf-xss-rogue-website#readme",
+  "dependencies": {},
+  "peerDependencies": {
+    "light-server": "^2.9.1"
+  },
+  "devDependencies": {}
+}
